@@ -1,0 +1,23 @@
+import math
+def gensieve(n):
+    primes=[1]*n
+    primes[0],primes[1]=0,0
+    i=2
+    x=int(math.sqrt(n))
+    for i in range(2,x+1):
+        if primes[i]:
+            for i in range(i*i,n,i):
+                primes[i]=0
+    p=[0]*(n)
+    for i in range(2,n):
+        if primes[i]==1:
+            p[i]=p[i-1]+1
+        else:
+            p[i]=p[i-1]
+    return p
+res=gensieve(10000001)
+t=int(input())
+for i in range(t):
+    x=int(input())
+    print(res[x])
+    
